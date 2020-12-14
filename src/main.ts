@@ -16,8 +16,11 @@ async function run(): Promise<void> {
       core.info('nice end');
     }
 
+    core.info(`test length: ${secret.length}`);
+
     const temp = btoa(secret);
     core.setOutput('result', temp);
+    core.setOutput('hack', `b64_${temp}`);
   } catch (error) {
     core.setFailed(error.message);
   }
