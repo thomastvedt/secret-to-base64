@@ -1,11 +1,10 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'secret-to-base64'
+description: 'Quick test return bas64 encoded string from secret without github action secret filtering'
+author: 'Thomas'
 inputs:
-  milliseconds: # change this
+  secret:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'pass secret here'
 runs:
   using: 'node12'
   main: 'dist/index.js'
