@@ -1,13 +1,14 @@
 require('./sourcemap-register.js');
 module.exports = /******/ (() => {
   // webpackBootstrap
-  /******/ 'use strict';
   /******/ var __webpack_modules__ = {
     /***/ 109: /***/ function (
       __unused_webpack_module,
       exports,
       __webpack_require__
     ) {
+      'use strict';
+
       var __createBinding =
         (this && this.__createBinding) ||
         (Object.create
@@ -86,17 +87,29 @@ module.exports = /******/ (() => {
             );
           });
         };
+      var __importDefault =
+        (this && this.__importDefault) ||
+        function (mod) {
+          return mod && mod.__esModule ? mod : { default: mod };
+        };
       Object.defineProperty(exports, '__esModule', { value: true });
       const core = __importStar(__webpack_require__(186));
+      const btoa_1 = __importDefault(__webpack_require__(738));
       function run() {
         return __awaiter(this, void 0, void 0, function* () {
           try {
             const secret = core.getInput('secret');
             if (secret.startsWith('***')) {
               core.debug('hmm bad stuff');
+            } else {
+              core.debug('nice start');
             }
-            // eslint-disable-next-line no-undef
-            const temp = btoa(secret);
+            if (secret.endsWith('***')) {
+              core.debug('hmm bad stuff endf');
+            } else {
+              core.debug('nice end');
+            }
+            const temp = btoa_1.default(secret);
             core.setOutput('result', temp);
           } catch (error) {
             core.setFailed(error.message);
@@ -113,6 +126,8 @@ module.exports = /******/ (() => {
       exports,
       __webpack_require__
     ) {
+      'use strict';
+
       var __importStar =
         (this && this.__importStar) ||
         function (mod) {
@@ -205,6 +220,8 @@ module.exports = /******/ (() => {
       exports,
       __webpack_require__
     ) {
+      'use strict';
+
       var __awaiter =
         (this && this.__awaiter) ||
         function (thisArg, _arguments, P, generator) {
@@ -487,6 +504,8 @@ module.exports = /******/ (() => {
       exports,
       __webpack_require__
     ) {
+      'use strict';
+
       // For internal use, subject to change.
       var __importStar =
         (this && this.__importStar) ||
@@ -530,6 +549,8 @@ module.exports = /******/ (() => {
     },
 
     /***/ 278: /***/ (__unused_webpack_module, exports) => {
+      'use strict';
+
       // We use any as a valid input type
       /* eslint-disable @typescript-eslint/no-explicit-any */
       Object.defineProperty(exports, '__esModule', { value: true });
@@ -551,19 +572,44 @@ module.exports = /******/ (() => {
       /***/
     },
 
+    /***/ 738: /***/ (module) => {
+      (function () {
+        'use strict';
+
+        function btoa(str) {
+          var buffer;
+
+          if (str instanceof Buffer) {
+            buffer = str;
+          } else {
+            buffer = Buffer.from(str.toString(), 'binary');
+          }
+
+          return buffer.toString('base64');
+        }
+
+        module.exports = btoa;
+      })();
+
+      /***/
+    },
+
     /***/ 747: /***/ (module) => {
+      'use strict';
       module.exports = require('fs');
 
       /***/
     },
 
     /***/ 87: /***/ (module) => {
+      'use strict';
       module.exports = require('os');
 
       /***/
     },
 
     /***/ 622: /***/ (module) => {
+      'use strict';
       module.exports = require('path');
 
       /***/

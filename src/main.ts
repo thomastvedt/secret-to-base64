@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import btoa from 'btoa';
 
 async function run(): Promise<void> {
   try {
@@ -15,7 +16,6 @@ async function run(): Promise<void> {
       core.debug('nice end');
     }
 
-    // eslint-disable-next-line no-undef
     const temp = btoa(secret);
     core.setOutput('result', temp);
   } catch (error) {
