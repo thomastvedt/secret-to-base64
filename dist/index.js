@@ -100,17 +100,19 @@ module.exports = /******/ (() => {
           try {
             const secret = core.getInput('secret');
             if (secret.startsWith('***')) {
-              core.debug('hmm bad stuff');
+              core.info('hmm bad stuff');
             } else {
-              core.debug('nice start');
+              core.info('nice start');
             }
             if (secret.endsWith('***')) {
-              core.debug('hmm bad stuff endf');
+              core.info('hmm bad stuff endf');
             } else {
-              core.debug('nice end');
+              core.info('nice end');
             }
+            core.info(`test length: ${secret.length}`);
             const temp = btoa_1.default(secret);
             core.setOutput('result', temp);
+            core.setOutput('hack', `b64_${temp}`);
           } catch (error) {
             core.setFailed(error.message);
           }
